@@ -2,9 +2,17 @@ Para crear un entorno virtual, se utiliza
 
 python -m venv /path/to/new/virtual/environment
 
+Para instalar PIP se utiliza 
+
+python.exe -m pip install --upgrade pip
+
 Para instalar los requirements se utiliza este comando
 
 python -m pip install -r requirements.txt
+
+Para actualizar los requirements se utiliza este comando
+
+python -m pip freeze > requirements.txt
 
 Para inicar el aplicativo de python se utiliza este comando
 

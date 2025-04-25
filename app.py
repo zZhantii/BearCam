@@ -35,4 +35,4 @@ if __name__ == '__main__':
         check_database()
         create_tables()
         insert_User_data()
-    app.run(host='0.0.0.0', port=81, debug=True)
+    app.run(host='0.0.0.0', port=81, debug=True,  use_reloader=True)

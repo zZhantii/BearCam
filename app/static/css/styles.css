@@ -1,0 +1,68 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    font-family: 'Tektur', sans-serif;
+    color: #3E2723;
+}
+
+.tektur-font{
+    font-family: 'Tektur', sans-serif;
+}
+
+.btn-primary {
+    background-color: #3E2723;
+    border-color: #3E2723;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #D2B48C;
+}
+
+.btn-primary:hover {
+    background-color: #8B4513;
+    border-color: #8B4513;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #3E2723;
+    border-color: #3E2723;
+    color: #D2B48C;
+}
+
+.btn-tertiary {
+    font-family: 'Tektur', sans-serif;
+    background-color: #3E2723;
+    border-color: #3E2723;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #D2B48C;
+}
+
+.btn-tertiary:hover {
+    background-color: #D2B48C;
+    border-color: #D2B48C;
+    color: #3E2723;
+}
+
+.btn-link {
+    color: #D2B48C;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.navbar {
+    background-color: #8B4513;
+}
+
+.footer {
+        background-color: #3E2723;
+}
