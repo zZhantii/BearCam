@@ -1,0 +1,11 @@
+Para crear un entorno virtual, se utiliza
+
+python -m venv /path/to/new/virtual/environment
+
+Para instalar los requirements se utiliza este comando
+
+python -m pip install -r requirements.txt
+
+Para inicar el aplicativo de python se utiliza este comando
+
+python app.py
