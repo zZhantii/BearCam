@@ -37,10 +37,10 @@ class User(db.Model, UserMixin):
 class Plan(db.Model):
     __tablename__ = 'plans'
     plan_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
     duration_months = db.Column(db.Integer, nullable=False)
-    activation_code = db.Column(db.String)
+    activation_code = db.Column(db.String(100))
     created_at = db.Column(db.TIMESTAMP(timezone=True), server_default=db.func.now(), nullable=False)
     updated_at = db.Column(db.TIMESTAMP(timezone=True), onupdate=db.func.now())
 
@@ -55,8 +55,8 @@ class Attribute(db.Model):
     __tablename__ = 'attributes'
     attribute_id = db.Column(db.Integer, primary_key=True)
     plan_id = db.Column(db.Integer, db.ForeignKey('plans.plan_id'), nullable=False)
-    title = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.TIMESTAMP(timezone=True), server_default=db.func.now(), nullable=False)
     updated_at = db.Column(db.TIMESTAMP(timezone=True), onupdate=db.func.now())
 
@@ -70,8 +70,8 @@ class Media(db.Model):
     __tablename__ = 'media'
     media_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    type = db.Column(db.String, nullable=False)
-    url = db.Column(db.String, nullable=False)
+    type = db.Column(db.String(100), nullable=False)
+    url = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.TIMESTAMP(timezone=True), server_default=db.func.now(), nullable=False)
     updated_at = db.Column(db.TIMESTAMP(timezone=True), onupdate=db.func.now())
 
