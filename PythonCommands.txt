@@ -2,6 +2,10 @@ Para crear un entorno virtual, se utiliza
 
 python -m venv /path/to/new/virtual/environment
 
+Para activar el entorno virtual
+
+.\venv\Scripts\activate
+
 Para instalar PIP se utiliza 
 
 python.exe -m pip install --upgrade pip
