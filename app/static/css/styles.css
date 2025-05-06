@@ -54,9 +54,13 @@ h1 {
 }
 
 .btn-link {
-    color: #D2B48C;
+    color: #8B4513;
     background-color: transparent;
     text-decoration: none;
+}
+
+.btn-link:hover {
+    color: #3E2723;
 }
 
 .navbar {
@@ -64,5 +68,25 @@ h1 {
 }
 
 .footer {
-        background-color: #3E2723;
+    background-color: #3E2723;
+}
+
+.form-control {
+    border-color: #8B4513;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #8B4513;
+    box-shadow: 0 0 5px rgba(194, 156, 106, 0.5);
+    transform: scale(1.01);
+}
+
+.form-floating {
+    transition: all 0.3s ease-in-out;
+}
+
+.background-Form {
+    background-color: #D2B48C;
+    border-radius: 10px;
 }

@@ -8,5 +8,10 @@ private_route = Blueprint('private_route', __name__)
 def profile():
     return 'profile'
 
+@private_route.route('/products')
+@login_required
+def products():
+    return 'products'
+
 def register_private_routes(app):
     app.register_blueprint(private_route)

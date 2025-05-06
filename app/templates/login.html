@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In | BearCam{% endblock %}
+
+{% block content %}
+    <h1>Log In</h1>
+
+    <div class="background-Form  p-5 mt-4">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center gap-3">
+                <img src="{{ url_for('static', filename='img/icon/icon.ico') }}" height="100" alt="Logotivo empresa">
+                <h1 class="me-4">BearCam</h1>
+            </div>
+            <div class="col-12 d-flex flex-column justify-content-center gap-3">
+                <form action="#" method="post">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                </form>
+                <small>¿Aun no estas protegido?  <a href="{{ url_for('public.home') }}" class="btn-link">¡Contratano!</a></small>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

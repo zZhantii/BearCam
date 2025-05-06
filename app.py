@@ -1,6 +1,10 @@
+import os
 from app import create_app, db
 from sqlalchemy import text
 from app.models import User
+
+os.environ['FLASK_ENV'] = 'development'
+os.environ['FLASK_DEBUG'] = '1'
 
 app = create_app()
 
@@ -35,4 +39,5 @@ if __name__ == '__main__':
         check_database()
         create_tables()
         insert_User_data()
+        app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(host='0.0.0.0', port=81, debug=True,  use_reloader=True)
