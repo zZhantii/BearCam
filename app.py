@@ -2,6 +2,7 @@ import os
 from app import create_app, db
 from sqlalchemy import text
 from app.models import User
+from werkzeug.security import generate_password_hash
 
 os.environ['FLASK_ENV'] = 'development'
 os.environ['FLASK_DEBUG'] = '1'
@@ -25,8 +26,8 @@ def insert_User_data():
     with app.app_context():
         if User.query.filter(User.user_id.in_([1, 2])).first() is None:
             Users = [
-                User(user_id=1, username='admin', first_name='Admin1', last_name='Admin2', email='admin@demo.com', password='admin'),
-                User(user_id=2, username='user', first_name='User1', last_name='User2', email='user@demo.com', password='12345678')
+                User(user_id=1, username='admin', first_name='Admin1', last_name='Admin2', email='admin@demo.com', password=generate_password_hash('admin')),
+                User(user_id=2, username='user', first_name='User1', last_name='User2', email='user@demo.com', password=generate_password_hash('12345678'))
             ]
             db.session.bulk_save_objects(Users)
             db.session.commit()

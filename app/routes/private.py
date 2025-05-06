@@ -1,17 +1,23 @@
-from flask import Blueprint
-from flask_login import login_required
+from flask import Blueprint, render_template, redirect, url_for
+from flask_login import login_required, logout_user
 
 private_route = Blueprint('private_route', __name__)
 
 @private_route.route('/profile')
 @login_required
 def profile():
-    return 'profile'
+    return render_template('profile.html')
 
 @private_route.route('/products')
 @login_required
 def products():
-    return 'products'
+    return render_template('product.html')
+
+@private_route.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('public.login'))
 
 def register_private_routes(app):
     app.register_blueprint(private_route)
