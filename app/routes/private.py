@@ -19,5 +19,10 @@ def logout():
     logout_user()
     return redirect(url_for('public.login'))
 
+@private_route.route('/newPlan')
+@login_required
+def new_plan():
+    return render_template('newPlan.html')
+
 def register_private_routes(app):
     app.register_blueprint(private_route)

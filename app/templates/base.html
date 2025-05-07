@@ -43,3 +43,28 @@
 </body>
 
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnPersonal = document.getElementById("btn-personal");
+    const btnEmpresa = document.getElementById("btn-empresa");
+    const personalPlans = document.getElementById("personal-plans");
+    const empresaPlans = document.getElementById("empresa-plans");
+
+    if (btnPersonal && btnEmpresa) {
+      btnPersonal.addEventListener("click", () => {
+        personalPlans.classList.remove("d-none");
+        empresaPlans.classList.add("d-none");
+        btnPersonal.classList.add("active");
+        btnEmpresa.classList.remove("active");
+      });
+
+      btnEmpresa.addEventListener("click", () => {
+        empresaPlans.classList.remove("d-none");
+        personalPlans.classList.add("d-none");
+        btnEmpresa.classList.add("active");
+        btnPersonal.classList.remove("active");
+      });
+    }
+  });
+</script>
