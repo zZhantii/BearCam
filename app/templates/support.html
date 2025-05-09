@@ -1,0 +1,126 @@
+{% extends 'base.html' %} {% block title %}Soporte | BearCam{% endblock %} {%
+block content %}
+<h1 class="text-center mb-4">Centro de Soporte BearCam</h1>
+
+<!-- Sección de contacto rápido -->
+<div class="row my-5">
+  <div class="col-md-6">
+    <h4>¿Tienes una urgencia?</h4>
+    <p>Puedes llamarnos o escribirnos directamente.</p>
+    <ul class="list-unstyled">
+      <li><strong>Email:</strong> soporte@bearcam.com</li>
+      <li><strong>Teléfono:</strong> +34 912 345 678</li>
+      <li><strong>Horario:</strong> Lunes a Viernes de 9:00 a 18:00</li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h4>Formulario de contacto</h4>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea
+        class="form-control"
+        id="mensaje"
+        name="mensaje"
+        rows="4"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+</div>
+
+<!-- Sección de preguntas frecuentes -->
+<div class="faq-section">
+  <h3 class="mb-4">Preguntas Frecuentes</h3>
+  <div class="accordion" id="faqAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq1">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#respuesta1"
+        >
+          ¿Cómo instalo mi cámara BearCam?
+        </button>
+      </h2>
+      <div
+        id="respuesta1"
+        class="accordion-collapse collapse"
+        data-bs-parent="#faqAccordion"
+      >
+        <div class="accordion-body">
+          Una vez recibas tu cámara, conéctala a la corriente, descarga nuestra
+          app y sigue el asistente paso a paso para la instalación.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq2">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#respuesta2"
+        >
+          ¿Qué hacer si la cámara pierde conexión?
+        </button>
+      </h2>
+      <div
+        id="respuesta2"
+        class="accordion-collapse collapse"
+        data-bs-parent="#faqAccordion"
+      >
+        <div class="accordion-body">
+          Asegúrate de que tu red Wi-Fi funcione correctamente. Si el problema
+          persiste, reinicia la cámara y vuelve a configurarla.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq3">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#respuesta3"
+        >
+          ¿Cómo cancelo mi suscripción a un plan?
+        </button>
+      </h2>
+      <div
+        id="respuesta3"
+        class="accordion-collapse collapse"
+        data-bs-parent="#faqAccordion"
+      >
+        <div class="accordion-body">
+          Accede a tu perfil, ve a la sección "Mi Plan" y haz clic en "Cancelar
+          suscripción".
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

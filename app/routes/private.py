@@ -3,10 +3,10 @@ from flask_login import login_required, logout_user
 
 private_route = Blueprint('private_route', __name__)
 
-@private_route.route('/profile')
+@private_route.route('/admin')
 @login_required
-def profile():
-    return render_template('profile.html')
+def admin():
+    return render_template('admin.html')
 
 @private_route.route('/products')
 @login_required

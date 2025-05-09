@@ -25,5 +25,10 @@ def login():
 
     return render_template('login.html', form=form)
 
+
+@public_route.route('/support')
+def support():
+    return render_template('support.html')
+
 def register_public_routes(app):
     app.register_blueprint(public_route)

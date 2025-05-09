@@ -195,4 +195,23 @@ h1 {
   box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
 }
 
+.accordion-button:focus
+ {
+  box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.5);
 
+  background-color: #3e2723;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:active {
+  background-color: #3e2723;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) {
+
+  background-color: #3e2723;
+  color: #d2b48c;
+  transition: all 0.3s ease-in-out;
+}
