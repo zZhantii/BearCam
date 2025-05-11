@@ -1,68 +1,217 @@
 body {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h1 {
-    font-family: 'Tektur', sans-serif;
-    color: #3E2723;
+  font-family: "Tektur", sans-serif;
+  color: #3e2723;
 }
 
-.tektur-font{
-    font-family: 'Tektur', sans-serif;
+.tektur-font {
+  font-family: "Tektur", sans-serif;
 }
 
 .btn-primary {
-    background-color: #3E2723;
-    border-color: #3E2723;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #D2B48C;
+  background-color: #3e2723;
+  border-color: #3e2723;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #d2b48c;
 }
 
 .btn-primary:hover {
-    background-color: #8B4513;
-    border-color: #8B4513;
+  background-color: #8b4513;
+  border-color: #8b4513;
+}
+
+.btn-primary:active {
+  background-color: #8b4513;
+  border-color: #8b4513;
+}
+
+.btn-primary:focus,
+.btn-primary:active:focus,
+.btn-primary:focus-visible {
+  background-color: #8b4513;
+  border-color: #8b4513;
 }
 
 .btn-secondary {
-    background-color: transparent;
-    border-color: transparent;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #3E2723;
-    border-color: #3E2723;
-    color: #D2B48C;
+  background-color: #3e2723;
+  border-color: #3e2723;
+  color: #d2b48c;
+}
+
+.btn-secondary:focus,
+.btn-secondary:active:focus,
+.btn-secondary:focus-visible {
+  background-color: #3e2723;
+  border-color: #3e2723;
+  color: #d2b48c;
+  box-shadow: none !important;
 }
 
 .btn-tertiary {
-    font-family: 'Tektur', sans-serif;
-    background-color: #3E2723;
-    border-color: #3E2723;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #D2B48C;
+  font-family: "Tektur", sans-serif;
+  background-color: #3e2723;
+  border-color: #3e2723;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #d2b48c;
 }
 
 .btn-tertiary:hover {
-    background-color: #D2B48C;
-    border-color: #D2B48C;
-    color: #3E2723;
+  background-color: #d2b48c;
+  border-color: #d2b48c;
+  color: #3e2723;
+}
+
+.btn-tertiary:focus,
+.btn-tertiary:active:focus,
+.btn-tertiary:focus-visible {
+  background-color: #d2b48c;
+  border-color: #d2b48c;
+  color: #3e2723;
 }
 
 .btn-link {
-    color: #D2B48C;
-    background-color: transparent;
-    text-decoration: none;
+  color: #8b4513;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #3e2723;
+}
+
+.btn-link:focus,
+.btn-link:active:focus,
+.btn-link:focus-visible {
+  color: #3e2723;
 }
 
 .navbar {
-    background-color: #8B4513;
+  background-color: #8b4513;
 }
 
 .footer {
-        background-color: #3E2723;
+  background-color: #3e2723;
+}
+
+.form-control {
+  border-color: #8b4513;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #8b4513;
+  box-shadow: 0 0 5px rgba(194, 156, 106, 0.5);
+  transform: scale(1.01);
+}
+
+.form-floating {
+  transition: all 0.3s ease-in-out;
+}
+
+.background-Form {
+  background-color: #d2b48c;
+  border-radius: 10px;
+}
+
+.plan-card {
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 15px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.plan-description {
+  font-size: 0.95rem;
+  margin: 10px 0;
+  color: #666;
+}
+
+.plan-features li {
+  font-size: 0.9rem;
+}
+
+.btn-toggle-group .btn {
+  border-radius: 30px;
+  margin: 0 5px;
+  padding: 8px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark-bear {
+  background-color: #3b2d2d;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+}
+
+.btn-dark-bear:hover {
+  background-color: #4e3a3a;
+  color: #f0e6d2;
+  transform: translateY(-2px);
+}
+
+.btn-dark-bear:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.4);
+}
+
+.btn-dark-bear.active {
+  background-color: #3e2723;
+  color: #d2b48c;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+}
+
+.accordion-button:focus
+ {
+  box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.5);
+
+  background-color: #3e2723;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:active {
+  background-color: #3e2723;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) {
+
+  background-color: #3e2723;
+  color: #d2b48c;
+  transition: all 0.3s ease-in-out;
 }

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In | BearCam{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <h1 class="text-center mb-4">Log In</h1>
+
+            <div class="background-Form p-3 p-sm-4 p-md-5 mt-4">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center gap-3 mb-4">
+                        <img src="{{ url_for('static', filename='img/icon/icon.ico') }}" 
+                             class="img-fluid" 
+                             style="height: 80px; max-height: 100px;" 
+                             alt="Logotipo empresa">
+                        <h1 class="me-4 mb-0">BearCam</h1>
+                    </div>
+                    
+                    <div class="col-12">
+                        <!-- Formulario Flask-WTF -->
+                        <form method="POST" action="{{ url_for('public.login') }}">
+                            {{ form.hidden_tag() }}
+                            <div class="form-floating mb-3">
+                                {{ form.email(class="form-control", id="email", placeholder="name@example.com") }}
+                                <label for="email">Email address</label>
+                                {% for error in form.email.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-floating mb-4">
+                                {{ form.password(class="form-control", id="password", placeholder="Password") }}
+                                <label for="password">Password</label>
+                                {% for error in form.password.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-3">
+                            <small>¿Aun no estas protegido? 
+                                <a href="{{ url_for('public.home') }}" class="btn-link">
+                                    ¡Contrátanos!
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

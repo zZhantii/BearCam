@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}Products | BearCam{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center mb-4 btn-toggle-group">
+  <button class="btn btn-dark-bear me-2" id="btn-personal">Personal</button>
+  <button class="btn btn-dark-bear" id="btn-empresa">Empresa</button>
+</div>
+
+<!-- Planes para uso Personal -->
+<div id="personal-plans" class="row">
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam Mini</div>
+      <div class="price">39 € / unidad</div>
+      <p class="plan-description">Ideal para interiores, visión HD y audio bidireccional.</p>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• Resolución 1080p</li>
+        <li>• Visión nocturna</li>
+        <li>• Grabación en la nube</li>
+        <li>• Compatible con app móvil</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam Outdoor</div>
+      <div class="price">89 € / unidad</div>
+      <p class="plan-description">Resistente al agua, perfecta para exteriores con batería recargable.</p>
+      <button class="btn btn-primary w-100 my-3">Comprar ahora</button>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• Resolución 2K</li>
+        <li>• Detección de movimiento</li>
+        <li>• Batería de larga duración</li>
+        <li>• IP65 resistente al clima</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam Smart 360</div>
+      <div class="price">129 € / unidad</div>
+      <p class="plan-description">Cámara inteligente con rotación automática y seguimiento de objetos.</p>
+      <button class="btn btn-primary w-100 my-3">Comprar ahora</button>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• Ángulo de visión 360°</li>
+        <li>• Seguimiento automático</li>
+        <li>• Almacenamiento local + nube</li>
+        <li>• Control por voz (Alexa/Google)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Planes para Empresa -->
+<div id="empresa-plans" class="row d-none">
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam Pro</div>
+      <div class="price">299 € / unidad</div>
+      <p class="plan-description">Alta resolución, conexión PoE y grabación continua para negocios.</p>
+      <button class="btn btn-primary w-100 my-3">Contactar ventas</button>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• Resolución 4K Ultra HD</li>
+        <li>• Visión nocturna IR avanzada</li>
+        <li>• Conexión Power over Ethernet</li>
+        <li>• Compatible con NVR profesional</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam Corporate Kit</div>
+      <div class="price">999 € / pack 4</div>
+      <p class="plan-description">Pack completo de cámaras para empresas con acceso remoto y soporte técnico.</p>
+      <button class="btn btn-primary w-100 my-3">Solicitar demo</button>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• 4 cámaras BearCam Pro</li>
+        <li>• Acceso multiusuario</li>
+        <li>• Almacenamiento en servidor seguro</li>
+        <li>• Soporte técnico dedicado</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="plan-card text-center">
+      <div class="plan-title">BearCam AI Surveillance</div>
+      <div class="price">49 € / mes</div>
+      <p class="plan-description">Servicio de vigilancia con IA para detección de amenazas en tiempo real.</p>
+      <button class="btn btn-primary w-100 my-3">Suscribirse</button>
+      <ul class="list-unstyled plan-features text-start">
+        <li>• Análisis en tiempo real</li>
+        <li>• Alertas inteligentes por app o email</li>
+        <li>• Reconocimiento facial</li>
+        <li>• Informe mensual de seguridad</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

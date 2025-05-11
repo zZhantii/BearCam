@@ -9,7 +9,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
 bootstrap = Bootstrap()
-login_manager.login_view = 'public.home'
+login_manager.login_view = 'public.login'
 
 def create_app():
     app = Flask(__name__)
