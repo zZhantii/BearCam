@@ -2,7 +2,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "Tektur", sans-serif;
   color: #3e2723;
 }
@@ -214,4 +214,41 @@ h1 {
   background-color: #3e2723;
   color: #d2b48c;
   transition: all 0.3s ease-in-out;
+}
+
+/* Perfil */
+.menu-principal-perfil .section{
+  border: 1px solid #000000;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.menu-principal-perfil .section .fas{
+  color: #4e3a3a;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-principal-perfil .section .fas:hover{
+  color: #8b4513;
+}
+
+.foto-perfil {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.menu-perfil a{
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.2s ease-in-out;
+  font-size: 28px;
+  font-family: "Tektur", sans-serif;
+  font-weight: 500;
+}
+
+.menu-perfil a:hover{
+  color: #8b4513;
 }

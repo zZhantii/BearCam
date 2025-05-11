@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil | BearCam{% endblock %}
+
+{% block content %}
+    <h1>Perfil</h1>
+    <div class="d-flex justify-content-center mb-4 mt-3 menu-principal-perfil">
+        <div class="col-12 col-md-4 col-lg-4 section">
+           {% include 'components/menuPerfil.html' %}
+        </div>
+        <div class="col-12 col-md-8 col-lg-8">
+            <div class="section">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{{ url_for('private_route.profile') }}"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cámaras</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="section mt-3">
+                <h3 class="mt-3">Cámaras</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}

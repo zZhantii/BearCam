@@ -1,0 +1,23 @@
+<div class="d-flex align-items-center">
+    <img src="{{ url_for('static', filename='img/icon/icon.ico') }}" class="foto-perfil" alt="">
+    <div class="d-flex flex-column justify-content-center">
+        <h3 class="text-left mb-0">{{ current_user.username }}</h3>
+        <p class="text-left mb-0">{{ current_user.email}}</p>
+    </div>
+</div>
+<div class="mt-3 menu-perfil">
+    <ul class="d-flex list-unstyled flex-column gap-5">
+        <li>
+            <a href="{{ url_for('private_route.profile') }}">Dashboard</a>
+        </li>
+        <li>
+            <a href="{{ url_for('private_route.camaras') }}">Cámaras</a>
+        </li>
+        <li>
+            <a href="{{ url_for('private_route.fotografias') }}">Fotografias</a>
+        </li>
+        <li>
+            <a href="{{ url_for('private_route.logout') }}">Cerrar Sesión</a>
+        </li>
+    </ul>
+</div>
