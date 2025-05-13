@@ -18,6 +18,14 @@ Para actualizar los requirements se utiliza este comando
 
 python -m pip freeze > requirements.txt
 
+Para hacer migracion primero
+
+flask db init
+
+flask db migrate
+
+flask db upgrade
+
 Para inicar el aplicativo de python se utiliza este comando
 
 python app.py

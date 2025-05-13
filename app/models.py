@@ -6,9 +6,9 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), unique=True, nullable=False)
+    username = db.Column(db.String(100), unique=True)
     first_name = db.Column(db.String(100), nullable=False)
-    last_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True, nullable=False, index=True)
     password = db.Column(db.String(255), nullable=False)
     plan_id = db.Column(db.Integer, db.ForeignKey('plans.plan_id'))

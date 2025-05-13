@@ -14,7 +14,7 @@
         <div class="plan-title">BearCam Mini</div>
         <div class="price">39 € / unidad</div>
         <p class="plan-description">Ideal para interiores, visión HD y audio bidireccional.</p>
-        <a href="{{ url_for('private_route.new_plan') }}?plan=BearCamMini&precio=39" class="btn btn-primary w-100 my-3">Contratar ahora</a>
+        <a href="{{ url_for('public.new_plan', plan='BearCam Mini', price='39') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
         <ul class="list-unstyled plan-features text-start">
           <li>• Resolución 1080p</li>
           <li>• Visión nocturna</li>
