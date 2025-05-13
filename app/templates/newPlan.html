@@ -1,37 +1,59 @@
 {% extends 'base.html' %}
-{% block title %}New Plan | BearCam{% endblock %}
+{% block title %}Contratar Cámara | BearCam{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Regístrate en un Plan</h2>
-  <form method="POST" action="{{ url_for('registrar_plan') }}" class="mx-auto" style="max-width: 500px;">
+<div class="container my-5">
+  <h2 class="text-center mb-4">Contratar una Cámara de Seguridad</h2>
+  <form method="POST" action="{{ url_for('private_route.procesar_plan')}}" class="mx-auto" style="max-width: 600px">
+    {{ form.hidden_tag() }}
+
     <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre completo</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" required>
+      {{ form.full_name.label(class="form-label") }}
+      {{ form.full_name(class="form-control", id="full_name") }}
+      {% for error in form.full_name.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
     </div>
 
     <div class="mb-3">
-      <label for="email" class="form-label">Correo electrónico</label>
-      <input type="email" class="form-control" id="email" name="email" required>
+      {{ form.address.label(class="form-label") }}
+      {{ form.address(class="form-control", id="address") }}
+      {% for error in form.address.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
     </div>
 
     <div class="mb-3">
-      <label for="plan" class="form-label">Selecciona un plan</label>
-      <select class="form-select" id="plan" name="plan" required>
-        <option value="">-- Selecciona --</option>
-        <option value="plus">Plus (90 € / mes)</option>
-        <option value="plus_advance">Plus + Advance (90 € / mes)</option>
-        <option value="advance_empresa">Advance Empresa (150 € / mes)</option>
-      </select>
+      {{ form.phone.label(class="form-label") }}
+      {{ form.phone(class="form-control", id="phone") }}
+      {% for error in form.phone.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <!-- Mostrar Plan (deshabilitado) -->
+    <div class="mb-3">
+      <label class="form-label">Plan seleccionado</label>
+      <input type="text" class="form-control" value="{{ plan }}" disabled />
+      {{ form.plan(type="hidden", value=plan) }}
+    </div>
+
+    <!-- Mostrar Precio (deshabilitado) -->
+    <div class="mb-3">
+      <label class="form-label">Precio</label>
+      <input type="text" class="form-control" value="{{ precio }}" disabled />
+      {{ form.price(type="hidden", value=precio) }}
     </div>
 
     <div class="mb-3">
-      <label for="comentarios" class="form-label">Comentarios adicionales</label>
-      <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
+      {{ form.duration.label(class="form-label") }}
+      {{ form.duration(class="form-select", id="duration") }}
+      {% for error in form.duration.errors %}
+        <div class="text-danger small">{{ error }}</div>
+      {% endfor %}
     </div>
 
-    <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+    <button type="submit" class="btn btn-primary w-100">Contratar ahora</button>
   </form>
 </div>
 {% endblock %}
-
-
