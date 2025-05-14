@@ -1,27 +1,88 @@
-{% extends 'base.html' %}
-
-{% block title %}Perfil | BearCam{% endblock %}
-
-{% block content %}
-    <div class="container my-5">
-        <h1>Perfil</h1>
-        <div class="d-flex justify-content-center mb-4 mt-3 menu-principal-perfil">
-            <div class="col-12 col-md-4 col-lg-4 section">
-            {% include 'components/menuPerfil.html' %}
-            </div>
-            <div class="col-12 col-md-8 col-lg-8">
-                <div class="section">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{{ url_for('private_route.profile') }}"><i class="fas fa-home"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="section">
-                    <h3 class="mt-3">Dashboard</h3>
-                </div>
-            </div>
-        </div>
+{% extends 'base.html' %} {% block title %}Perfil | BearCam{% endblock %} {%
+block content %}
+<div class="container my-5">
+  <h1>Perfil</h1>
+  <div class="d-flex justify-content-center mb-4 mt-3 menu-principal-perfil">
+    <div class="col-12 col-md-4 col-lg-4 section">
+      {% include 'components/menuPerfil.html' %}
     </div>
-{% endblock %}
+    <div class="col-12 col-md-8 col-lg-8">
+      <div class="section">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="{{ url_for('private_route.profile') }}"
+                ><i class="fas fa-home"></i
+              ></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Dashboard
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div class="section">
+        <h3 class="mt-3">Dashboard</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para actualizar credenciales -->
+<div
+  class="modal fade"
+  id="updateCredentialsModal"
+  tabindex="-1"
+  aria-labelledby="updateCredentialsModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form
+        method="POST"
+        action="{{ url_for('private_route.update_credentials') }}"
+      >
+        {{ form.csrf_token }}
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateCredentialsModalLabel">
+            Actualizar credenciales
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            {{ form.username.label(class="form-label") }} {{
+            form.username(class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.new_password.label(class="form-label") }} {{
+            form.new_password(class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.confirm_password.label(class="form-label") }} {{
+            form.confirm_password(class="form-control") }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">
+            {{ form.submit.label.text }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% if needs_credentials_update %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var myModal = new bootstrap.Modal(
+      document.getElementById("updateCredentialsModal"),
+      {
+        backdrop: "static",
+        keyboard: false,
+      }
+    );
+    myModal.show();
+  });
+</script>
+{% endif %} {% endblock %}

@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True, nullable=False, index=True)
     password = db.Column(db.String(255), nullable=False)
+    has_changed_default_password = db.Column(db.Boolean, default=False)
     plan_id = db.Column(db.Integer, db.ForeignKey('plans.plan_id'))
     plan_status = db.Column(db.Boolean, default=False)
     activation_date = db.Column(db.TIMESTAMP(timezone=True))
