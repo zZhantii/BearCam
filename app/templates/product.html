@@ -9,99 +9,88 @@
   
   <!-- Planes para uso Personal -->
   <div id="personal-plans" class="row">
+    {% set personal_plans = [
+      {'name': 'BearCam Mini', 'price': 39, 'desc': 'Ideal para interiores, visión HD y audio bidireccional.', 'features': ['Resolución 1080p', 'Visión nocturna', 'Grabación en la nube', 'Compatible con app móvil']},
+      {'name': 'BearCam Outdoor', 'price': 89, 'desc': 'Resistente al agua, perfecta para exteriores con batería recargable.', 'features': ['Resolución 2K', 'Detección de movimiento', 'Batería de larga duración', 'IP65 resistente al clima']},
+      {'name': 'BearCam Smart 360', 'price': 129, 'desc': 'Cámara inteligente con rotación automática y seguimiento de objetos.', 'features': ['Ángulo de visión 360°', 'Seguimiento automático', 'Almacenamiento local + nube', 'Control por voz (Alexa/Google)']}
+    ] %}
+    
+    {% for plan in personal_plans %}
     <div class="col-12 col-md-6 col-lg-4">
       <div class="plan-card text-center">
-        <div class="plan-title">BearCam Mini</div>
-        <div class="price">39 € / mes</div>
-        <p class="plan-description">Ideal para interiores, visión HD y audio bidireccional.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam Mini', price='39') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
+        <div class="plan-title">{{ plan.name }}</div>
+        <div class="price">{{ plan.price }} € / mes</div>
+        <p class="plan-description">{{ plan.desc }}</p>
+        <a href="{% if current_user.is_authenticated %}
+                    {% if current_user.plan and current_user.plan.name == plan.name and current_user.plan.price == plan.price %}
+                    {% else %}
+                      {{ url_for('public.new_plan', plan=plan.name, price=plan.price) }}
+                    {% endif %}
+                 {% else %}
+                    {{ url_for('public.new_plan', plan=plan.name, price=plan.price) }}
+                 {% endif %}" 
+           class="btn btn-primary w-100 my-3">
+           {% if current_user.is_authenticated %}
+              {% if current_user.plan and current_user.plan.name == plan.name and current_user.plan.price == plan.price %}
+                Plan Activo
+              {% else %}
+                Actualizar mi plan
+              {% endif %}
+           {% else %}
+              Contratar ahora
+           {% endif %}
+        </a>
         <ul class="list-unstyled plan-features text-start">
-          <li>• Resolución 1080p</li>
-          <li>• Visión nocturna</li>
-          <li>• Grabación en la nube</li>
-          <li>• Compatible con app móvil</li>
+          {% for feat in plan.features %}
+          <li>• {{ feat }}</li>
+          {% endfor %}
         </ul>
       </div>
     </div>
-  
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="plan-card text-center">
-        <div class="plan-title">BearCam Outdoor</div>
-        <div class="price">89 € / mes</div>
-        <p class="plan-description">Resistente al agua, perfecta para exteriores con batería recargable.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam Outdoor', price='89') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
-        <ul class="list-unstyled plan-features text-start">
-          <li>• Resolución 2K</li>
-          <li>• Detección de movimiento</li>
-          <li>• Batería de larga duración</li>
-          <li>• IP65 resistente al clima</li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="plan-card text-center">
-        <div class="plan-title">BearCam Smart 360</div>
-        <div class="price">129 € / mes</div>
-        <p class="plan-description">Cámara inteligente con rotación automática y seguimiento de objetos.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam Smart 360', price='129') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
-        <ul class="list-unstyled plan-features text-start">
-          <li>• Ángulo de visión 360°</li>
-          <li>• Seguimiento automático</li>
-          <li>• Almacenamiento local + nube</li>
-          <li>• Control por voz (Alexa/Google)</li>
-        </ul>
-      </div>
-    </div>
+    {% endfor %}
   </div>
   
   <!-- Planes para Empresa -->
   <div id="empresa-plans" class="row d-none">
+    {% set empresa_plans = [
+      {'name': 'BearCam Pro', 'price': 299, 'desc': 'Alta resolución, conexión PoE y grabación continua para negocios.', 'features': ['Resolución 4K Ultra HD', 'Visión nocturna IR avanzada', 'Conexión Power over Ethernet', 'Compatible con NVR profesional']},
+      {'name': 'BearCam Corporate Kit', 'price': 999, 'desc': 'Pack completo de cámaras para empresas con acceso remoto y soporte técnico.', 'features': ['4 cámaras BearCam Pro', 'Acceso multiusuario', 'Almacenamiento en servidor seguro', 'Soporte técnico dedicado']},
+      {'name': 'BearCam AI Surveillance', 'price': 49, 'desc': 'Servicio de vigilancia con IA para detección de amenazas en tiempo real.', 'features': ['Análisis en tiempo real', 'Alertas inteligentes por app o email', 'Reconocimiento facial', 'Informe mensual de seguridad']}
+    ] %}
+
+    {% for plan in empresa_plans %}
     <div class="col-12 col-md-6 col-lg-4">
       <div class="plan-card text-center">
-        <div class="plan-title">BearCam Pro</div>
-        <div class="price">299 € / mes</div>
-        <p class="plan-description">Alta resolución, conexión PoE y grabación continua para negocios.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam Pro', price='299') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
+        <div class="plan-title">{{ plan.name }}</div>
+        <div class="price">{{ plan.price }} € / mes</div>
+        <p class="plan-description">{{ plan.desc }}</p>
+        <a href="{% if current_user.is_authenticated %}
+                    {% if current_user.plan and current_user.plan.name == plan.name and current_user.plan.price == plan.price %}
+                    {% else %}
+                      {{ url_for('public.new_plan', plan=plan.name, price=plan.price) }}
+                    {% endif %}
+                 {% else %}
+                    {{ url_for('public.new_plan', plan=plan.name, price=plan.price) }}
+                 {% endif %}" 
+           class="btn btn-primary w-100 my-3">
+           {% if current_user.is_authenticated %}
+              {% if current_user.plan and current_user.plan.name == plan.name and current_user.plan.price == plan.price %}
+                Plan Activo
+              {% else %}
+                Actualizar mi plan
+              {% endif %}
+           {% else %}
+              Contratar ahora
+           {% endif %}
+        </a>
         <ul class="list-unstyled plan-features text-start">
-          <li>• Resolución 4K Ultra HD</li>
-          <li>• Visión nocturna IR avanzada</li>
-          <li>• Conexión Power over Ethernet</li>
-          <li>• Compatible con NVR profesional</li>
+          {% for feat in plan.features %}
+          <li>• {{ feat }}</li>
+          {% endfor %}
         </ul>
       </div>
     </div>
-  
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="plan-card text-center">
-        <div class="plan-title">BearCam Corporate Kit</div>
-        <div class="price">999 € / pack 4</div>
-        <p class="plan-description">Pack completo de cámaras para empresas con acceso remoto y soporte técnico.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam Corporate Kit', price='999') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
-        <ul class="list-unstyled plan-features text-start">
-          <li>• 4 cámaras BearCam Pro</li>
-          <li>• Acceso multiusuario</li>
-          <li>• Almacenamiento en servidor seguro</li>
-          <li>• Soporte técnico dedicado</li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="plan-card text-center">
-        <div class="plan-title">BearCam AI Surveillance</div>
-        <div class="price">49 € / mes</div>
-        <p class="plan-description">Servicio de vigilancia con IA para detección de amenazas en tiempo real.</p>
-        <a href="{{ url_for('public.new_plan', plan='BearCam AI Surveillance', price='49') }}" class="btn btn-primary w-100 my-3">Contratar ahora</a>
-        <ul class="list-unstyled plan-features text-start">
-          <li>• Análisis en tiempo real</li>
-          <li>• Alertas inteligentes por app o email</li>
-          <li>• Reconocimiento facial</li>
-          <li>• Informe mensual de seguridad</li>
-        </ul>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
-
 {% endblock %}

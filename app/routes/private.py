@@ -17,13 +17,10 @@ private_route = Blueprint('private_route', __name__)
 @private_route.route('/profile')
 @login_required
 def profile():
-    # Verificar si el usuario necesita cambiar sus credenciales
     needs_credentials_update = not current_user.has_changed_default_password or not current_user.username
     
-    # Crear formulario para el modal
     form = ChangePasswordUsernameForm()
     
-    # Aquí irá tu código actual para el perfil
     return render_template('profile.html', needs_credentials_update=needs_credentials_update, form=form)
 
 @private_route.route('/update_credentials', methods=['POST'])
@@ -34,7 +31,7 @@ def update_credentials():
     if form.validate_on_submit():
         # Verificar si el nombre de usuario ya existe
         existing_user = User.query.filter_by(username=form.username.data).first()
-        if existing_user and existing_user.id != current_user.id:
+        if existing_user and existing_user.user_id != current_user.user_id:
             flash('Este nombre de usuario ya está en uso.', 'danger')
             return redirect(url_for('private_route.profile'))
         
