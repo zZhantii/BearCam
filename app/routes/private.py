@@ -104,9 +104,8 @@ def upload_foto():
         return jsonify({'error': 'Archivo sin nombre'}), 400
 
     filename = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + secure_filename(file.filename)
-    filepath = os.path.join(UPLOAD_FOLDER, filename)
-    file.save(filepath)
-    return jsonify({'message': 'Foto guardada correctamente', 'path': filepath}), 200
+    file.save(filename)
+    return jsonify({'message': 'Foto guardada correctamente', 'path': filename}), 200
 
 # Esta función se mantiene por compatibilidad, pero ahora usa nuestra nueva implementación
 def tomar_foto_desde_esp32():
@@ -154,16 +153,16 @@ def camaras():
 @private_route.route('/profile/fotografias')
 @login_required
 def fotografias():
-    fotos_bd = Media.query.filter_by(user_id=current_user.user_id).all()
+    page = request.args.get('page', 1, type=int)
+    per_page = 6  # Mostrar 6 fotos por página
 
-    fotos = []
-    for foto in fotos_bd:
-        fotos.append({
-            'url': f'img/{foto.url}',
-            'created_at': foto.created_at
-        })
-
-    return render_template('fotografias.html', fotos=fotos)
+    # Obtener fotos del usuario logueado con paginación
+    fotos_paginadas = Media.query \
+        .filter_by(user_id=current_user.user_id) \
+        .order_by(Media.created_at.desc()) \
+        .paginate(page=page, per_page=per_page)
+    
+    return render_template('fotografias.html', fotos_paginadas=fotos_paginadas)
 
 @private_route.route('/logout')
 @login_required
@@ -171,11 +170,6 @@ def logout():
     logout_user()
     return redirect(url_for('public.login'))
 
-
-
-
-
-    
 
 def register_private_routes(app):
     app.register_blueprint(private_route)

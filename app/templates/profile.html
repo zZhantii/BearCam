@@ -22,7 +22,19 @@ block content %}
         </nav>
       </div>
       <div class="section">
-        <h3 class="mt-3">Dashboard</h3>
+        <h3>Dashboard</h3>
+        <p class="mb-3 text-perfil">
+          Bienvenido, {{ current_user.username }}! Aquí puedes navegar por tu
+          perfil y ver tus datos personales.
+        </p>
+        <div class="mt-3">
+          <p><strong>Nombre de usuario:</strong> {{ current_user.username }}</p>
+          <p><strong>Nombre:</strong> {{ current_user.first_name }}</p>
+          <p><strong>Apellido:</strong> {{ current_user.last_name }}</p>
+          <p><strong>Email:</strong> {{ current_user.email }}</p>
+          <p><strong>Plan:</strong> {{ current_user.plan.name }}</p>
+          <p><strong>Activación:</strong> {% if current_user.activation_date %}Si{% else %}No{% endif %}</p>
+        </div>
       </div>
     </div>
   </div>
