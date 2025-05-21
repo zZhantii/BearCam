@@ -1,0 +1,82 @@
+import machine
+import time
+import network
+import urequests
+import json
+
+# Configuración de pines
+TRIG_PIN = 13
+ECHO_PIN = 12
+
+# Configuración de WiFi
+SSID = 'Alumnes'
+PASSWORD = 'edu71243080'
+SERVER_URL = 'http://172.16.3.146:81/detectado'  # Cambia esta IP si es necesario
+
+# Configurar los pines para el sensor HC-SR04
+trigger = machine.Pin(TRIG_PIN, machine.Pin.OUT)
+echo = machine.Pin(ECHO_PIN, machine.Pin.IN)
+
+# Función para leer la distancia del sensor HC-SR04
+def read_distance_cm():
+    trigger.value(0)
+    time.sleep_us(2)
+    trigger.value(1)
+    time.sleep_us(10)
+    trigger.value(0)
+    
+    # Medir el tiempo de duración del pulso de retorno
+    pulse_duration = machine.time_pulse_us(echo, 1, 30000)  # Timeout de 30ms
+    if pulse_duration < 0:
+        return -1  # Error: sin señal de eco
+
+    # Calcular la distancia en centímetros
+    distance = pulse_duration * 0.034 / 2
+    return distance
+
+# Conectar a la red WiFi
+def connect_wifi():
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    wlan.connect(SSID, PASSWORD)
+    
+    print("Conectando a WiFi...")
+    while not wlan.isconnected():
+        time.sleep(0.5)
+    
+    print('Conectado a WiFi:', wlan.ifconfig())
+
+# Enviar mensaje al servidor Flask
+def send_to_flask(message):
+    try:
+        print("Enviando POST a", SERVER_URL)
+        headers = {'Content-Type': 'application/json'}
+        data = json.dumps({"mensaje": message})
+        response = urequests.post(SERVER_URL, data=data, headers=headers)
+        
+        print("Respuesta del servidor:", response.status_code)
+        print("Contenido:", response.text)
+        response.close()
+    except Exception as e:
+        print("Error al enviar la solicitud:", e)
+
+# Bucle principal
+def main():
+    connect_wifi()
+    
+    while True:
+        distance = read_distance_cm()
+        if distance < 0:
+            print("Error al medir distancia")
+        else:
+            print(f'Distancia: {distance:.2f} cm')
+            
+            if distance < 100:  # Persona detectada
+                print('Persona detectada. Enviando aviso al servidor...')
+                send_to_flask("Persona detectada")
+        
+        time.sleep(2)
+
+# Ejecutar
+if __name__ == "__main__":
+    main()
