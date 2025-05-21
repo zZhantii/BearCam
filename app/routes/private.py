@@ -155,12 +155,19 @@ def camaras():
 @login_required
 def fotografias():
     user_id = current_user.user_id
-    imagen_nombre = 'imagen_20250516_162910.jpg'
-    # Construir la ruta completa
-    ruta_imagen = url_for('static', filename=f'img/{user_id}/{imagen_nombre}')
-    # Aquí podrías recuperar los datos adicionales de la base de datos usando user_id
-    # Luego pasarlos al template
-    return render_template('fotografias.html', ruta_imagen=ruta_imagen, user_id=user_id)
+
+    # Obtener fotos del usuario desde la BD
+    fotos_bd = Media.query.filter_by(user_id=user_id).order_by(Media.created_at.desc()).all()
+
+    fotos = []
+    for foto in fotos_bd:
+        ruta = f'img/{user_id}/{Media.url}'
+        fotos.append({
+            'url': ruta,
+            'created_at': foto.created_at
+        })
+
+    return render_template('fotografias.html', fotos=fotos, user_id=user_id)
 
 @private_route.route('/logout')
 @login_required
