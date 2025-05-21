@@ -25,7 +25,7 @@
                             <div class="fotos-container">
                                 {% for foto in fotos %}
                                     <div class="foto-item">
-                                        <img src="{{ url_for('static', filename=foto.url) }}" alt="Foto" class="img-fluid">
+                                        <img src="{{ url_for('static', filename='img/' + foto.url) }}" alt="Foto" class="img-fluid">
                                         <p>Fecha: {{ foto.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
                                     </div>
                                 {% endfor %}
@@ -34,6 +34,7 @@
                             <p>No tienes fotos cargadas aún.</p>
                         {% endif %}
 
+                        <img src="{{ url_for('static', filename='img/imagen_20250521_192630.jpg') }}" alt="">
                     </div>
                 </div>
             </div>

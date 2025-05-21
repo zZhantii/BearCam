@@ -154,20 +154,16 @@ def camaras():
 @private_route.route('/profile/fotografias')
 @login_required
 def fotografias():
-    user_id = current_user.user_id
-
-    # Obtener fotos del usuario desde la BD
-    fotos_bd = Media.query.filter_by(user_id=user_id).order_by(Media.created_at.desc()).all()
+    fotos_bd = Media.query.filter_by(user_id=current_user.user_id).all()
 
     fotos = []
     for foto in fotos_bd:
-        ruta = f'img/{user_id}/{Media.url}'
         fotos.append({
-            'url': ruta,
+            'url': f'img/{foto.url}',
             'created_at': foto.created_at
         })
 
-    return render_template('fotografias.html', fotos=fotos, user_id=user_id)
+    return render_template('fotografias.html', fotos=fotos)
 
 @private_route.route('/logout')
 @login_required
