@@ -24,15 +24,17 @@
                         {% if fotos %}
                             <div class="fotos-container">
                                 {% for foto in fotos %}
-                                <div class="foto-item">
-                                    <img src="{{ url_for(filename = foto.url) }}" alt="Foto">
-                                    <p>Fecha: {{ foto.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
-                                </div>
-                                {% endfor %}
+                                    <div class="foto-item">
+                                        {% set cleaned_url = foto.url.replace('\\', '/').replace('/./', '') %}
+                                        <img src="{{ url_for('static', filename=cleaned_url.split('static/')[-1]) }}" alt="Foto">
+                                        <p>Fecha: {{ foto.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+                                    </div>
+                                {% endfor %}                               
                             </div>
                         {% else %}
-                        <p>No tienes fotos cargadas aún.</p>
+                            <p>No tienes fotos cargadas aún.</p>
                         {% endif %}
+
                     </div>
                 </div>
             </div>
