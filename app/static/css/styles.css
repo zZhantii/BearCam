@@ -314,3 +314,9 @@ h1, h2, h3, h4, h5, h6 {
 .menu-perfil a:hover{
   color: #8b4513;
 }
+
+.video-directo img{
+  width: 100%;
+  height: 100%;
+}
+

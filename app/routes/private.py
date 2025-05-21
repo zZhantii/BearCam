@@ -154,6 +154,7 @@ def camaras():
 @private_route.route('/profile/fotografias')
 @login_required
 def fotografias():
+    fotos = current_user.fotos 
     return render_template('fotografias.html')
 
 @private_route.route('/logout')
