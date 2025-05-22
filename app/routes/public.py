@@ -50,7 +50,7 @@ def generar_password_segura(longitud=12):
 
 @public_route.route('/newPlan', methods=['GET', 'POST'])
 def new_plan():
-    # Obtener plan y precio desde la URL
+    
     plan = request.args.get('plan')
     price = request.args.get('price')
     

@@ -17,7 +17,7 @@ from werkzeug.security import generate_password_hash
 from functools import wraps
 
 private_route = Blueprint('private_route', __name__)
-# Configuración para la cámara ESP32
+
 
 def capture_image_and_save_file(user_id, custom_filename=None):
     try:
@@ -39,7 +39,7 @@ def capture_image_and_save_file(user_id, custom_filename=None):
             media_entry = Media(
                 user_id=user_id,
                 type="imagen",
-                url=f"/{filepath}"
+                url=filename
             )
             db.session.add(media_entry)
             db.session.commit()
@@ -53,11 +53,11 @@ def capture_image_and_save_file(user_id, custom_filename=None):
         print(f"Error al capturar imagen: {str(e)}")
         return {"status": "error", "message": f"Error al capturar imagen: {str(e)}"}
 
-ESP32_CAM_IP = "172.16.7.192"  # IP de tu ESP32-CAM
-ESP32_CAM_PORT = 80  # Puerto correcto (sin especificar se usa el puerto 80 por defecto)
-ESP32_CAM_ENDPOINT = "capture"  # Endpoint para captura de fotos, confirmado en navegador
-UPLOAD_FOLDER = './static/img'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+ESP32_CAM_IP = "172.16.4.2"  # IP ESP32-CAM
+ESP32_CAM_PORT = 80  
+ESP32_CAM_ENDPOINT = "capture"  
+UPLOAD_FOLDER = 'app/static/img'
+
 
 @private_route.route('/detectado', methods=['POST'])
 def detectado():
@@ -107,7 +107,6 @@ def upload_foto():
     file.save(filename)
     return jsonify({'message': 'Foto guardada correctamente', 'path': filename}), 200
 
-# Esta función se mantiene por compatibilidad, pero ahora usa nuestra nueva implementación
 def tomar_foto_desde_esp32():
     result = capture_image_from_esp32("foto_esp32")
     return result
@@ -129,13 +128,13 @@ def update_credentials():
     form = ChangePasswordUsernameForm()
     
     if form.validate_on_submit():
-        # Verificar si el nombre de usuario ya existe
+        
         existing_user = User.query.filter_by(username=form.username.data).first()
         if existing_user and existing_user.user_id != current_user.user_id:
             flash('Este nombre de usuario ya está en uso.', 'danger')
             return redirect(url_for('private_route.profile'))
         
-        # Actualizar los datos del usuario
+       
         current_user.username = form.username.data
         current_user.password = generate_password_hash(form.new_password.data)
         current_user.has_changed_default_password = True
@@ -154,7 +153,7 @@ def camaras():
 @login_required
 def fotografias():
     page = request.args.get('page', 1, type=int)
-    per_page = 6  # Mostrar 6 fotos por página
+    per_page = 6
 
     # Obtener fotos del usuario logueado con paginación
     fotos_paginadas = Media.query \
